@@ -1,399 +1,1164 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Syaiful Estrada</title>
+        <script>
+            (function () {
+                const saved = localStorage.getItem("theme");
+                const prefersDark = window.matchMedia(
+                    "(prefers-color-scheme: dark)",
+                ).matches;
+                const isDark = saved === "dark" || (!saved && prefersDark);
+                if (isDark) document.documentElement.classList.add("dark");
+                if (!saved)
+                    localStorage.setItem("theme", isDark ? "dark" : "light");
+            })();
+        </script>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Portfolio | Omori</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <!-- Bootstrap CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <style type="text/tailwindcss">
+            @custom-variant dark (&:where(.dark, .dark *));
+        </style>
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            @media (max-width: 767px) {
+                #navbar-menu {
+                    display: none;
+                }
+                #navbar-menu.mobile-open {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+        <!-- navbar -->
+        <nav
+            class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 fixed w-full z-50 top-0"
+        >
+            <div
+                class="max-w-7xl flex flex-wrap items-center justify-between mx-auto px-4 py-3"
+            >
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <div
+                        class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600 dark:bg-blue-500"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-5 h-5 text-white"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+                            />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-xl font-bold text-gray-900 dark:text-white"
+                    >
+                        Syaiful Estrada
+                    </span>
+                </a>
 
-  <!-- AOS Cdn -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+                <div class="flex items-center gap-2 md:order-2">
+                    <button
+                        id="theme-toggle"
+                        type="button"
+                        aria-label="Toggle dark mode"
+                        class="p-2 text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600 transition-colors"
+                    >
+                        <svg
+                            id="icon-moon"
+                            class="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                            />
+                        </svg>
+                        <svg
+                            id="icon-sun"
+                            class="w-5 h-5 hidden"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            />
+                        </svg>
+                    </button>
 
-  <!-- My Css -->
-  <link rel="stylesheet" href="style.css">
+                    <a
+                        href="https://www.linkedin.com/in/muhammad-syaifulloh-311474401"
+                        class="hidden md:inline-flex items-center gap-1.5 text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 font-medium rounded-lg text-sm px-4 py-2 transition-colors"
+                    >
+                        Hire Me
+                        <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
 
-</head>
+                    <button
+                        id="navbar-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="navbar-menu"
+                        aria-label="Buka menu"
+                        class="inline-flex items-center justify-center p-2 w-10 h-10 text-gray-500 dark:text-gray-400 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600 transition-colors"
+                    >
+                        <svg
+                            id="ham-open"
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 17 14"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15"
+                            />
+                        </svg>
+                        <svg
+                            id="ham-close"
+                            class="w-5 h-5 hidden"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
 
-<body id="home">
+                <div
+                    id="navbar-menu"
+                    class="max-md:hidden w-full md:flex md:w-auto md:order-1"
+                >
+                    <ul
+                        class="flex flex-col w-full p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 md:flex-row md:space-x-5 md:bg-transparent md:dark:bg-transparent md:border-0"
+                    >
+                        <li>
+                            <a
+                                href="#hero"
+                                class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
+                                aria-current="page"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#about"
+                                class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
+                                >About</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#skills"
+                                class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
+                                >Skills</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#projects"
+                                class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
+                                >Projects</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
+                                >Contact</a
+                            >
+                        </li>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-primary shadow-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Omori</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact Me</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- AKhir Navbar -->
-
-  <!-- Jumbotron -->
-  <section class="jumbotron text-center">
-    <img src="img/omori.jpg" alt="omori" width="200" class="rounded-circle img-thumbnail">
-    <h1 class="display-4">Omori</h1>
-    <p class="lead"></p>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#ffff" fill-opacity="1"
-        d="M0,96L48,101.3C96,107,192,117,288,106.7C384,96,480,64,576,80C672,96,768,160,864,181.3C960,203,1056,181,1152,149.3C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-      </path>
-    </svg>
-  </section>
-  <!-- Akhir Jumbotron -->
-
-  <!-- About me -->
-  <section id="about">
-    <div class="container">
-      <div class="row text-center mb-3">
-        <div>
-          <h2>About Me</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center fs-5 text-center">
-        <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In veniam facere quo quod velit, sunt
-            reprehenderit perspiciatis amet temporibus repudiandae.</p>
-        </div>
-        <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem accusamus voluptate ipsum quisquam
-            necessitatibus temporibus sed delectus placeat, tempore molestiae, magnam minus alias veritatis optio
-            debitis hic?</p>
-        </div>
-      </div>
-    </div>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#e2edff" fill-opacity="1"
-        d="M0,128L60,138.7C120,149,240,171,360,149.3C480,128,600,64,720,58.7C840,53,960,107,1080,133.3C1200,160,1320,160,1380,160L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
-      </path>
-    </svg>
-  </section>
-  <!-- Akhir About Me -->
-
-  <!-- Projects -->
-  <section id="projects">
-    <div class="cotainer">
-      <div class="row text-center">
-        <div class="col">
-          <h2>My Projects</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-4 mb-3">
-          <div class="card" data-aos="flip-left" ata-aos-duration="500">
-            <img src="projects/4.jpg" class="card-img-top" alt="Project1">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go Somewhere</a>
+                        <li
+                            class="md:hidden mt-3 pt-3 border-t border-gray-200 dark:border-gray-600"
+                        >
+                            <a
+                                href="#"
+                                class="flex items-center justify-center gap-2 w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors"
+                            >
+                                Hire Me
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                    />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card" data-aos="flip-left">
-            <img src="projects/2.jpg" class="card-img-top" alt="Project1">
-            <div class="card-body" ata-aos-duration="500" data-aos-delay="150">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go Somewhere</a>
+        </nav>
+
+        <!-- Hero section -->
+        <section
+            id="hero"
+            class="w-full w-full min-h-screen mt-0 bg-center bg-no-repeat flex items-center justify-center relative"
+        >
+            <div
+                class="flex flex-col items-center text-center px-4 justify-center"
+            >
+                <img
+                    src="asset/profile.webp"
+                    alt="Syaiful Estrada"
+                    class="w-60 h-60 rounded-full object-cover border-4 dark:border-gray-50 shadow-lg mb-5"
+                />
+
+                <h1
+                    class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-6 tracking-tight"
+                >
+                    Syaiful Estrada<br />
+                    <span
+                        class="text-blue-600 dark:text-blue-400 text-2xl md:text-3xl font-medium"
+                    >
+                        Software Engineer
+                    </span>
+                </h1>
+
+                <div class="flex flex-wrap gap-3 justify-center mt-2">
+                    <a
+                        href="asset/cv-muhammad-syaifulloh.pdf"
+                        download
+                        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                    >
+                        Download CV
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/muhammad-syaifulloh-311474401"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-100 hover:border-blue-700 duration-300 dark:hover:bg-gray-800 font-semibold px-6 py-3 rounded-lg transition-colors"
+                    >
+                        LinkedIn →
+                    </a>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card" data-aos="flip-left">
-            <img src="projects/3.jpg" class="card-img-top" alt="Project1" ata-aos-duration="500" data-aos-delay="250">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go Somewhere</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-4xl mx-auto px-4">
+                <!-- Heading -->
+                <div class="text-center mb-12">
+                    <h2
+                        class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                    >
+                        Tentang Saya
+                    </h2>
+                    <p class="text-gray-500 dark:text-gray-400">
+                        Sedikit tentang saya
+                    </p>
+                </div>
+
+                <!-- Foto + Bio -->
+                <div
+                    class="flex flex-col md:flex-row items-center gap-10 mb-14"
+                >
+                    <div class="flex-shrink-0">
+                        <img
+                            src="asset/profile.webp"
+                            alt="Syaiful Estrada"
+                            class="w-48 h-48 rounded-2xl object-cover shadow-lg border-4 border-white dark:border-gray-700"
+                        />
+                    </div>
+                    <div class="text-left">
+                        <h3
+                            class="text-xl font-bold text-gray-900 dark:text-white mb-3"
+                        >
+                            Halo, saya Syaiful 👋
+                        </h3>
+                        <p
+                            class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+                        >
+                            Saya seorang Backend Developer dengan pengalaman 1
+                            tahun di LPSE (Lembaga Pengadaan Secara Elektronik).
+                            Saya berfokus pada pembangunan aplikasi web yang
+                            bersih, skalabel, dan andal menggunakan PHP,
+                            Laravel, dan ekosistem JavaScript modern.
+                        </p>
+                        <p
+                            class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
+                        >
+                            Saat ini sedang menempuh kuliah Sistem Informasi di
+                            Universitas Terbuka (sedang jeda). Terbuka untuk
+                            peluang kerja baru.
+                        </p>
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm"
+                        >
+                            <div
+                                class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+                            >
+                                <svg
+                                    class="w-4 h-4 text-blue-500 flex-shrink-0"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                    />
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
+                                </svg>
+                                Sidoarjo, Indonesia
+                            </div>
+                            <div
+                                class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+                            >
+                                <svg
+                                    class="w-4 h-4 text-blue-500 flex-shrink-0"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    />
+                                </svg>
+                                Terbuka untuk pekerjaan baru
+                            </div>
+                            <div
+                                class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-4 h-4 text-blue-500 flex-shrink-0"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                                    />
+                                </svg>
+
+                                +62 821-3197-8772
+                            </div>
+                            <div
+                                class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+                            >
+                                <svg
+                                    class="w-4 h-4 text-blue-500 flex-shrink-0"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    />
+                                </svg>
+                                syaifultheminister@gmail.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pengalaman Kerja -->
+                <div class="mb-14">
+                    <h3
+                        class="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"
+                    >
+                        <span
+                            class="w-1 h-5 bg-blue-600 rounded-full inline-block"
+                        ></span>
+                        Pengalaman Kerja
+                    </h3>
+
+                    <!-- LPSE -->
+                    <div
+                        class="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700 space-y-1 mb-6"
+                    >
+                        <div
+                            class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-gray-800"
+                        ></div>
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+                        >
+                            <h4
+                                class="font-semibold text-gray-900 dark:text-white"
+                            >
+                                Backend Developer
+                            </h4>
+                            <span
+                                class="text-xs text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded-full w-fit"
+                                >1 Tahun</span
+                            >
+                        </div>
+                        <p
+                            class="text-sm text-blue-600 dark:text-blue-400 font-medium"
+                        >
+                            LPSE – Government Procurement System
+                        </p>
+                        <ul
+                            class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400"
+                        >
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Membangun dan memelihara aplikasi backend
+                                menggunakan PHP (Laravel) dan MySQL
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Membangun Sicerdas, sistem manajemen sekolah
+                                mencakup data siswa, proses akademik, dan
+                                operasional menggunakan FilamentPHP
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Merancang dan mengembangkan RESTful API
+                                Sicerdas untuk integrasi dengan aplikasi Android
+                                dan iOS
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Berkontribusi pada pengembangan sistem
+                                CariKatalog untuk manajemen data pengadaan
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Membuat REST API untuk pengunduhan data produk
+                                dari e-Katalog versi 5 dan 6 pada sistem CekLPSE
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Mengoptimalkan performa aplikasi dan query
+                                database untuk meningkatkan efisiensi sistem
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Magang Markaz Design -->
+                    <div
+                        class="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700 space-y-1"
+                    >
+                        <div
+                            class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-400 dark:bg-gray-500 border-2 border-white dark:border-gray-800"
+                        ></div>
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+                        >
+                            <h4
+                                class="font-semibold text-gray-900 dark:text-white"
+                            >
+                                Desainer Grafis – Magang
+                            </h4>
+                            <span
+                                class="text-xs text-gray-500 dark:text-gray-400 font-medium bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full w-fit"
+                                >3 Bulan</span
+                            >
+                        </div>
+                        <p
+                            class="text-sm text-blue-600 dark:text-blue-400 font-medium"
+                        >
+                            Markaz Design
+                        </p>
+                        <ul
+                            class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400"
+                        >
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Membuat desain feed Instagram untuk brand
+                                Monster Keripik Usus
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Mendesain konten visual untuk CNC Cleaning
+                                Service Tandon
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-blue-500 mt-0.5">•</span
+                                >Membuat desain produk untuk Cossydeo (deodoran)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pendidikan -->
+                <div>
+                    <h3
+                        class="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"
+                    >
+                        <span
+                            class="w-1 h-5 bg-blue-600 rounded-full inline-block"
+                        ></span>
+                        Pendidikan
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- UT -->
+                        <div
+                            class="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700"
+                        >
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 border-2 border-white dark:border-gray-800"
+                            ></div>
+                            <div
+                                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+                            >
+                                <h4
+                                    class="font-semibold text-gray-900 dark:text-white"
+                                >
+                                    Universitas Terbuka
+                                </h4>
+                                <span
+                                    class="text-xs text-gray-500 dark:text-gray-400"
+                                    >Sedang jeda</span
+                                >
+                            </div>
+                            <p
+                                class="text-sm text-blue-600 dark:text-blue-400 font-medium"
+                            >
+                                S1 Sistem Informasi
+                            </p>
+                        </div>
+
+                        <!-- SMK -->
+                        <div
+                            class="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700"
+                        >
+                            <div
+                                class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-gray-800"
+                            ></div>
+                            <div
+                                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1"
+                            >
+                                <h4
+                                    class="font-semibold text-gray-900 dark:text-white"
+                                >
+                                    SMK Senopati
+                                </h4>
+                                <span
+                                    class="text-xs text-gray-500 dark:text-gray-400"
+                                    >Jul 2020 – Jul 2023</span
+                                >
+                            </div>
+                            <p
+                                class="text-sm text-blue-600 dark:text-blue-400 font-medium"
+                            >
+                                Rekayasa Perangkat Lunak
+                            </p>
+                            <p
+                                class="text-sm text-gray-600 dark:text-gray-400 mt-1"
+                            >
+                                Ekstrakulikuler: Robotika, Forum Rekayasa
+                                Perangkat Lunak. Fokus pada pengembangan web,
+                                desain database, dan pemrograman dasar
+                                menggunakan PHP dan MySQL.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card" data-aos="flip-left" ata-aos-duration="500" data-aos-delay="350">
-            <img src="projects/5.jpg" class="card-img-top" alt="Project1">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go Somewhere</a>
+        </section>
+
+        <div class="border-t border-gray-200 dark:border-neutral-800"></div>
+
+        <!-- Skill section -->
+        <section
+            id="skills"
+            class="flex justify-center items-center bg-white dark:bg-gray-900 w-full min-h-screen"
+        >
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <h2
+                    class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                    Tech Stack
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 mb-12">
+                    Teknologi dan tools yang saya gunakan sehari-hari
+                </p>
+
+                <!-- Backend -->
+                <div class="mb-10">
+                    <h3
+                        class="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                    >
+                        Backend
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium"
+                        >
+                            Laravel
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium"
+                        >
+                            Express.js
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="mb-10">
+                    <h3
+                        class="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                    >
+                        Frontend
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg text-sm font-medium"
+                        >
+                            JavaScript
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg text-sm font-medium"
+                        >
+                            React.js
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg text-sm font-medium"
+                        >
+                            Tailwind CSS
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg text-sm font-medium"
+                        >
+                            Bootstrap
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="mb-10">
+                    <h3
+                        class="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                    >
+                        Database
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium"
+                        >
+                            MySQL
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium"
+                        >
+                            PostgreSQL
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium"
+                        >
+                            MongoDB
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="mb-10">
+                    <h3
+                        class="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                    >
+                        Dev Tools
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-medium"
+                        >
+                            Git
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-medium"
+                        >
+                            VS Code
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-medium"
+                        >
+                            Herd
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-medium"
+                        >
+                            phpMyAdmin
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <div class="mb-10">
+                    <h3
+                        class="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                    >
+                        Design & Media
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-4 py-2 bg-pink-50 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-lg text-sm font-medium"
+                        >
+                            Figma
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-pink-50 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-lg text-sm font-medium"
+                        >
+                            CorelDRAW
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-pink-50 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-lg text-sm font-medium"
+                        >
+                            CapCut
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-pink-50 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-lg text-sm font-medium"
+                        >
+                            Kdenlive
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-pink-50 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-lg text-sm font-medium"
+                        >
+                            Filmora
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Productivity -->
+                <div>
+                    <h3
+                        class="text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-4"
+                    >
+                        Productivity
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span
+                            class="px-4 py-2 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-lg text-sm font-medium"
+                        >
+                            Microsoft Word
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-lg text-sm font-medium"
+                        >
+                            Microsoft Excel
+                        </span>
+
+                        <span
+                            class="px-4 py-2 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-lg text-sm font-medium"
+                        >
+                            Microsoft PowerPoint
+                        </span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card" data-aos="flip-left" ata-aos-duration="500" data-aos-delay="450">
-            <img src="projects/1.jpg" class="card-img-top" alt="Project1">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go Somewhere</a>
+        </section>
+
+        <!-- Projects -->
+
+        <section
+            id="projects"
+            class="flex justify-center items-center bg-white dark:bg-gray-900 w-full min-h-screen py-20"
+        >
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-14">
+                    <h2
+                        class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                    >
+                        Project Experience
+                    </h2>
+
+                    <p class="text-gray-500 dark:text-gray-400">
+                        Beberapa project dan sistem yang pernah saya kerjakan
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Sicerdas -->
+                    <div
+                        class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:-translate-y-1 transition duration-300 flex flex-col"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <h3
+                                class="text-xl font-semibold text-gray-900 dark:text-white"
+                            >
+                                Sicerdas
+                            </h3>
+
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300"
+                            >
+                                Laravel
+                            </span>
+                        </div>
+
+                        <p
+                            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                        >
+                            Sistem manajemen sekolah berbasis web yang mencakup
+                            pengelolaan data siswa, proses akademik, dan
+                            operasional sekolah menggunakan Laravel dan
+                            FilamentPHP.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Laravel
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                FilamentPHP
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                REST API
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                MySQL
+                            </span>
+                        </div>
+
+                        <a
+                            href="https://app.sicerdas.id/"
+                            target="_blank"
+                            class="mt-auto inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                            Kunjungi Website →
+                        </a>
+                    </div>
+
+                    <!-- CekLPSE -->
+                    <div
+                        class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:-translate-y-1 transition duration-300 flex flex-col"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <h3
+                                class="text-xl font-semibold text-gray-900 dark:text-white"
+                            >
+                                CekLPSE
+                            </h3>
+
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300"
+                            >
+                                API System
+                            </span>
+                        </div>
+
+                        <p
+                            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                        >
+                            Sistem monitoring dan pengolahan data pengadaan yang
+                            terintegrasi dengan e-Katalog versi 5 dan 6 melalui
+                            REST API untuk proses pengunduhan dan sinkronisasi
+                            data produk.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Laravel
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                REST API
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                MySQL
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Performance Optimization
+                            </span>
+                        </div>
+
+                        <a
+                            href="https://www.ceklpse.id/"
+                            target="_blank"
+                            class="mt-auto inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                            Kunjungi Website →
+                        </a>
+                    </div>
+
+                    <!-- CariKatalog -->
+                    <div
+                        class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:-translate-y-1 transition duration-300 flex flex-col"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <h3
+                                class="text-xl font-semibold text-gray-900 dark:text-white"
+                            >
+                                CariKatalog
+                            </h3>
+
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300"
+                            >
+                                Procurement
+                            </span>
+                        </div>
+
+                        <p
+                            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                        >
+                            Platform pencarian dan pengolahan data pengadaan
+                            yang membantu pengguna dalam mengakses dan
+                            menelusuri informasi produk dari sistem e-Katalog
+                            secara lebih efisien.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Laravel
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                MySQL
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Backend Development
+                            </span>
+                        </div>
+
+                        <a
+                            href="http://carikatalog.id/"
+                            target="_blank"
+                            class="mt-auto inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                            Kunjungi Website →
+                        </a>
+                    </div>
+
+                    <!-- Galaxify -->
+                    <div
+                        class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:-translate-y-1 transition duration-300 flex flex-col"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <h3
+                                class="text-xl font-semibold text-gray-900 dark:text-white"
+                            >
+                                Galaxify
+                            </h3>
+
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300"
+                            >
+                                CMS System
+                            </span>
+                        </div>
+
+                        <p
+                            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                        >
+                            Website company profile berbasis Laravel dengan
+                            sistem CMS dinamis menggunakan FilamentPHP. Memiliki
+                            fitur pengelolaan About Us, Services, Projects,
+                            Members, Blog, dan Contact melalui admin panel,
+                            lengkap dengan realtime search blog, filter
+                            kategori, dan dark mode.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Laravel
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Livewire
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                FilamentPHP
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Tailwind CSS
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                MySQL
+                            </span>
+
+                            <span
+                                class="text-xs px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                            >
+                                Dark Mode
+                            </span>
+                        </div>
+
+                        <a
+                            href="https://github.com/syaifulestrada/galaxify"
+                            target="_blank"
+                            class="mt-auto inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                            Lihat Repository →
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <section id="keyboards">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>My Keyboards</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="keyboard-box">
-              <h4 class="keyboard-name">Discord TKL</h4>
-              <img src="img/keyboards/3.png" alt="Discord TKL" class="keyboard-img">
-              <a href="#" class="btn btn-light keyboard-detail-button">Show Details</a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="keyboard-box">
-              <h4 class="keyboard-name">Casual Mecha</h4>
-              <img src="img/keyboards/1.png" alt="Casual Mecha" class="keyboard-img">
-              <a href="#" class="btn btn-light keyboard-detail-button">Show Details</a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="keyboard-box">
-              <h4 class="keyboard-name">Razer Mechas</h4>
-              <img src="img/keyboards/2.png" alt="Razer Mecha" class="keyboard-img">
-              <a href="#" class="btn btn-light keyboard-detail-button">Show Details</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <script>
+            const html = document.documentElement;
+            const iconMoon = document.getElementById("icon-moon");
+            const iconSun = document.getElementById("icon-sun");
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#ffff" fill-opacity="1"
-        d="M0,128L30,106.7C60,85,120,43,180,64C240,85,300,171,360,176C420,181,480,107,540,80C600,53,660,75,720,112C780,149,840,203,900,234.7C960,267,1020,277,1080,282.7C1140,288,1200,288,1260,266.7C1320,245,1380,203,1410,181.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-      </path>
-    </svg>
-  </section>
-  <!-- Akhir Projects -->
+            function syncIcons() {
+                const dark = html.classList.contains("dark");
+                iconMoon.classList.toggle("hidden", dark);
+                iconSun.classList.toggle("hidden", !dark);
+            }
+            syncIcons();
 
-  <!-- Gallery -->
-  <section id="gallery">
-    <div class="container">
-      <div class="row text-center mb-3">
-        <div class="col">
-          <h2>Gallery</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/1.jpg" alt="gambar 1" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/2.jpg" alt="gambar 2" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/3.jpg" alt="gambar 3" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/4.jpg" alt="gambar 4" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/5.jpg" alt="gambar 5" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/6.jpg" alt="gambar 6" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/7.jpg" alt="gambar 7" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/8.jpg" alt="gambar 8" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/9.jpg" alt="gambar 9" class="img-fluid gallery-img">
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="#">
-            <img src="img/gallery/thumbnail/10.jpg" alt="gambar 10" class="img-fluid gallery-img">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- AKhir Gallery -->
+            document
+                .getElementById("theme-toggle")
+                .addEventListener("click", () => {
+                    html.classList.toggle("dark");
+                    localStorage.setItem(
+                        "theme",
+                        html.classList.contains("dark") ? "dark" : "light",
+                    );
+                    syncIcons();
+                });
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="row text-center mb-3">
-        <div class="col">
-          <h2>Contact Me</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-7">
-          <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
-            <strong>Terimakasih!</strong> Pesan anda sudah kami terima.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <form name="omori-contact-form">
-            <div class="mb-3">
-              <label for="nama" class="form-label">Nama Lengkap</label>
-              <input type="text" class="form-control" id="nama" aria-describedby="nama" name="nama">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" aria-describedby="email" name="email">
-            </div>
-            <div class="mb-3">
-              <label for="pesan" class="form-label">Pesan</label>
-              <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
-            </div>
+            const navToggle = document.getElementById("navbar-toggle");
+            const navMenu = document.getElementById("navbar-menu");
+            const hamOpen = document.getElementById("ham-open");
+            const hamClose = document.getElementById("ham-close");
+            let open = false;
 
-            <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+            function setMenu(state) {
+                open = state;
+                navMenu.classList.toggle("mobile-open", state);
+                hamOpen.classList.toggle("hidden", state);
+                hamClose.classList.toggle("hidden", !state);
+                navToggle.setAttribute("aria-expanded", state);
+            }
 
-            <button class="btn btn-primary btn-loading d-none" type="button" disabled>
-              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              Loading...
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path fill="#0d6efd" fill-opacity="1"
-        d="M0,96L30,85.3C60,75,120,53,180,48C240,43,300,53,360,85.3C420,117,480,171,540,202.7C600,235,660,245,720,213.3C780,181,840,107,900,112C960,117,1020,203,1080,208C1140,213,1200,139,1260,112C1320,85,1380,107,1410,117.3L1440,128L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-      </path>
-    </svg>
-  </section>
-  <!-- AKhir Contact -->
-
-  <!-- Footer -->
-  <footer class="bg-primary text-center pb-5">
-    <p class="text-white">Created With <i class="bi bi-heart-fill text-danger"></i> By <a
-        href="https://github.com/syaifulestrada" class="text-white fw-bold text-decoration-none"
-        target="_blank">Omori</a></p>
-  </footer>
-  <!-- Akhir Footer -->
-
-
-  <!-- CDN Bootstrap Javascript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
-
-  <!-- GSAP Cdn -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/TextPlugin.min.js"></script>
-
-  <script>
-    gsap.registerPlugin(TextPlugin);
-    gsap.to('.lead', { duration: 2, delay: 1.5, text: 'Serial Killer | Students' })
-    gsap.from('.jumbotron img', { duration: 1, rotateY: 360, opacity: 0 });
-    gsap.from('.navbar', { duration: 1.5, y: '-100%', opacity: 0, ease: 'bounce' })
-    gsap.from('.display-4', { duration: 1, x: -50, opacity: 0, delay: 0.5, ease: 'back' })
-  </script>
-
-  <!-- AOS Cdn -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script>
-    const galleryImage = document.querySelectorAll('.gallery-img');
-
-    galleryImage.forEach((img, i) => {
-      img.dataset.aos = 'fade-down';
-      img.dataset.aosDelay = i * 100;
-      img.dataset.aosDuration = 1000;
-    })
-
-    AOS.init({
-      once: true,
-      duration: 2000,
-    });
-
-
-  </script>
-
-  <!-- Contact Form -->
-
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby76CLTzfrtzpG6VyJDmIZxEOXtZUBFB331XXiBj7kF0gvXcCDC_Q8bUKACw2YRK8AHPA/exec'
-
-    const form = document.forms['omori-contact-form']
-    const btnKirim = document.querySelector('.btn-kirim');
-    const btnLoading = document.querySelector('.btn-loading');
-    const myAlert = document.querySelector('.my-alert');
-
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      // ketika tombol submit diklik
-      // tampilkan tombol loading, hilangkan tombol kirim
-      btnLoading.classList.toggle('d-none');
-      btnKirim.classList.toggle('d-none');
-
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-          // tampilkan tombol kirim, hilangkan tombol loading
-          btnLoading.classList.toggle('d-none');
-          btnKirim.classList.toggle('d-none');
-          // tampilkan alert
-          myAlert.classList.toggle('d-none');
-          // reset form
-          form.reset();
-          console.log('Success!', response)
-        })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
-
-  <script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
-  <script type="text/javascript">
-    VanillaTilt.init(document.querySelectorAll(".keyboard-box"), {
-      max: 35,
-      speed: 1000,
-      glare: true
-    });
-
-  </script>
-
-</body>
-
+            navToggle.addEventListener("click", () => setMenu(!open));
+            document
+                .querySelectorAll(".nav-link")
+                .forEach((l) =>
+                    l.addEventListener("click", () => setMenu(false)),
+                );
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && open) setMenu(false);
+            });
+            window.addEventListener("resize", () => {
+                if (window.innerWidth >= 768) setMenu(false);
+            });
+        </script>
+    </body>
 </html>
