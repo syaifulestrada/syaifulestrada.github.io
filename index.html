@@ -79,6 +79,14 @@
 
                 <div class="flex items-center gap-2 md:order-2">
                     <button
+                        id="lang-toggle"
+                        type="button"
+                        aria-label="Toggle language"
+                        class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    >
+                        <span id="lang-label">ID</span>
+                    </button>
+                    <button
                         id="theme-toggle"
                         type="button"
                         aria-label="Toggle dark mode"
@@ -182,6 +190,7 @@
                                 href="#hero"
                                 class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
                                 aria-current="page"
+                                data-i18n="nav-home"
                                 >Home</a
                             >
                         </li>
@@ -208,7 +217,7 @@
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="#contact"
                                 class="nav-link block px-3 py-2 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent md:hover:text-blue-600 md:dark:hover:text-blue-400 md:p-0 transition-colors"
                                 >Contact</a
                             >
@@ -220,6 +229,7 @@
                             <a
                                 href="#"
                                 class="flex items-center justify-center gap-2 w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors"
+                                data-i18n="nav-hireme"
                             >
                                 Hire Me
                                 <svg
@@ -294,10 +304,14 @@
                 <div class="text-center mb-12">
                     <h2
                         class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                        data-i18n="about-heading"
                     >
                         Tentang Saya
                     </h2>
-                    <p class="text-gray-500 dark:text-gray-400">
+                    <p
+                        class="text-gray-500 dark:text-gray-400"
+                        data-i18n="about-sub"
+                    >
                         Sedikit tentang saya
                     </p>
                 </div>
@@ -316,11 +330,13 @@
                     <div class="text-left">
                         <h3
                             class="text-xl font-bold text-gray-900 dark:text-white mb-3"
+                            data-i18n="about-hello"
                         >
                             Halo, saya Syaiful 👋
                         </h3>
                         <p
                             class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+                            data-i18n="about-p1"
                         >
                             Saya seorang Backend Developer dengan pengalaman 1
                             tahun di LPSE (Lembaga Pengadaan Secara Elektronik).
@@ -330,6 +346,7 @@
                         </p>
                         <p
                             class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
+                            data-i18n="about-p2"
                         >
                             Saat ini sedang menempuh kuliah Sistem Informasi di
                             Universitas Terbuka (sedang jeda). Terbuka untuk
@@ -377,7 +394,9 @@
                                         d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                     />
                                 </svg>
-                                Terbuka untuk pekerjaan baru
+                                <span data-i18n="about-status">
+                                    Terbuka untuk pekerjaan baru
+                                </span>
                             </div>
                             <div
                                 class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
@@ -424,6 +443,7 @@
                 <!-- Pengalaman Kerja -->
                 <div class="mb-14">
                     <h3
+                        data-i18n="about-exp-title"
                         class="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"
                     >
                         <span
@@ -448,6 +468,7 @@
                                 Backend Developer
                             </h4>
                             <span
+                                data-i18n="lpse-duration"
                                 class="text-xs text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded-full w-fit"
                                 >1 Tahun</span
                             >
@@ -461,36 +482,49 @@
                             class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400"
                         >
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Membangun dan memelihara aplikasi backend
-                                menggunakan PHP (Laravel) dan MySQL
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="lpse-li1">
+                                    Membangun dan memelihara aplikasi backend
+                                    menggunakan PHP (Laravel) dan MySQL
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Membangun Sicerdas, sistem manajemen sekolah
-                                mencakup data siswa, proses akademik, dan
-                                operasional menggunakan FilamentPHP
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="lpse-li2">
+                                    Membangun Sicerdas, sistem manajemen sekolah
+                                    mencakup data siswa, proses akademik, dan
+                                    operasional menggunakan FilamentPHP
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Merancang dan mengembangkan RESTful API
-                                Sicerdas untuk integrasi dengan aplikasi Android
-                                dan iOS
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="lpse-li3">
+                                    Merancang dan mengembangkan RESTful API
+                                    Sicerdas untuk integrasi dengan aplikasi
+                                    Android dan iOS
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Berkontribusi pada pengembangan sistem
-                                CariKatalog untuk manajemen data pengadaan
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="lpse-li4">
+                                    Berkontribusi pada pengembangan sistem
+                                    CariKatalog untuk manajemen data pengadaan
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Membuat REST API untuk pengunduhan data produk
-                                dari e-Katalog versi 5 dan 6 pada sistem CekLPSE
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="lpse-li5">
+                                    Membuat REST API untuk pengunduhan data
+                                    produk dari e-Katalog versi 5 dan 6 pada
+                                    sistem CekLPSE
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Mengoptimalkan performa aplikasi dan query
-                                database untuk meningkatkan efisiensi sistem
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="lpse-li6">
+                                    Mengoptimalkan performa aplikasi dan query
+                                    database untuk meningkatkan efisiensi sistem
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -507,11 +541,13 @@
                         >
                             <h4
                                 class="font-semibold text-gray-900 dark:text-white"
+                                data-i18n="markaz-title"
                             >
                                 Desainer Grafis – Magang
                             </h4>
                             <span
                                 class="text-xs text-gray-500 dark:text-gray-400 font-medium bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full w-fit"
+                                data-i18n="markaz-duration"
                                 >3 Bulan</span
                             >
                         </div>
@@ -524,18 +560,25 @@
                             class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400"
                         >
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Membuat desain feed Instagram untuk brand
-                                Monster Keripik Usus
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="markaz-li1">
+                                    Membuat desain feed Instagram untuk brand
+                                    Monster Keripik Usus
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Mendesain konten visual untuk CNC Cleaning
-                                Service Tandon
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="markaz-li2">
+                                    Mendesain konten visual untuk CNC Cleaning
+                                    Service Tandon
+                                </span>
                             </li>
                             <li class="flex gap-2">
-                                <span class="text-blue-500 mt-0.5">•</span
-                                >Membuat desain produk untuk Cossydeo (deodoran)
+                                <span class="text-blue-500 mt-0.5">•</span>
+                                <span data-i18n="markaz-li3">
+                                    Membuat desain produk untuk Cossydeo
+                                    (deodoran)
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -545,6 +588,7 @@
                 <div>
                     <h3
                         class="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"
+                        data-i18n="about-edu-title"
                     >
                         <span
                             class="w-1 h-5 bg-blue-600 rounded-full inline-block"
@@ -570,6 +614,7 @@
                                 </h4>
                                 <span
                                     class="text-xs text-gray-500 dark:text-gray-400"
+                                    data-i18n="about-ut-status"
                                     >Sedang jeda</span
                                 >
                             </div>
@@ -607,6 +652,7 @@
                             </p>
                             <p
                                 class="text-sm text-gray-600 dark:text-gray-400 mt-1"
+                                data-i18n="about-smk-desc"
                             >
                                 Ekstrakulikuler: Robotika, Forum Rekayasa
                                 Perangkat Lunak. Fokus pada pengembangan web,
@@ -633,7 +679,10 @@
                     Tech Stack
                 </h2>
 
-                <p class="text-gray-500 dark:text-gray-400 mb-12">
+                <p
+                    class="text-gray-500 dark:text-gray-400 mb-12"
+                    data-i18n="skills-sub"
+                >
                     Teknologi dan tools yang saya gunakan sehari-hari
                 </p>
 
@@ -845,7 +894,10 @@
                         Project Experience
                     </h2>
 
-                    <p class="text-gray-500 dark:text-gray-400">
+                    <p
+                        class="text-gray-500 dark:text-gray-400"
+                        data-i18n="projects-sub"
+                    >
                         Beberapa project dan sistem yang pernah saya kerjakan
                     </p>
                 </div>
@@ -871,6 +923,7 @@
 
                         <p
                             class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                            data-i18n="sicerdas-desc"
                         >
                             Sistem manajemen sekolah berbasis web yang mencakup
                             pengelolaan data siswa, proses akademik, dan
@@ -933,6 +986,7 @@
 
                         <p
                             class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                            data-i18n="ceklpse-desc"
                         >
                             Sistem monitoring dan pengolahan data pengadaan yang
                             terintegrasi dengan e-Katalog versi 5 dan 6 melalui
@@ -995,6 +1049,7 @@
 
                         <p
                             class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                            data-i18n="carikatalog-desc"
                         >
                             Platform pencarian dan pengolahan data pengadaan
                             yang membantu pengguna dalam mengakses dan
@@ -1051,6 +1106,7 @@
 
                         <p
                             class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5"
+                            data-i18n="galaxify-desc"
                         >
                             Website company profile berbasis Laravel dengan
                             sistem CMS dinamis menggunakan FilamentPHP. Memiliki
@@ -1110,6 +1166,169 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
+        <section
+            id="contact"
+            class="min-h-screen w-full py-20 bg-gray-50 dark:bg-gray-800 flex justify-center items-center"
+        >
+            <div class="max-w-xl mx-auto px-4 text-center">
+                <h2
+                    class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                >
+                    Hubungi Saya
+                </h2>
+                <p
+                    class="text-gray-500 dark:text-gray-400 mb-10"
+                    data-i18n="contact-sub"
+                >
+                    Tertarik bekerja sama? Jangan ragu untuk menghubungi saya.
+                </p>
+
+                <div class="flex flex-col gap-4">
+                    <!-- Email -->
+                    <a
+                        href="mailto:syaifultheminister@gmail.com"
+                        class="flex items-center gap-4 p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all duration-200 group"
+                    >
+                        <div
+                            class="flex items-center justify-center w-11 h-11 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex-shrink-0"
+                        >
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <p
+                                class="text-xs text-gray-400 dark:text-gray-500 font-medium mb-0.5"
+                            >
+                                Email
+                            </p>
+                            <p
+                                class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+                            >
+                                syaifultheminister@gmail.com
+                            </p>
+                        </div>
+                        <svg
+                            class="w-4 h-4 text-gray-400 ml-auto group-hover:text-blue-500 transition-colors"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a
+                        href="https://www.linkedin.com/in/muhammad-syaifulloh-311474401"
+                        target="_blank"
+                        class="flex items-center gap-4 p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all duration-200 group"
+                    >
+                        <div
+                            class="flex items-center justify-center w-11 h-11 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex-shrink-0"
+                        >
+                            <svg
+                                class="w-5 h-5"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                                />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <p
+                                class="text-xs text-gray-400 dark:text-gray-500 font-medium mb-0.5"
+                            >
+                                LinkedIn
+                            </p>
+                            <p
+                                class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+                            >
+                                Muhammad Syaifulloh
+                            </p>
+                        </div>
+                        <svg
+                            class="w-4 h-4 text-gray-400 ml-auto group-hover:text-blue-500 transition-colors"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a
+                        href="https://wa.me/6282131978772"
+                        target="_blank"
+                        class="flex items-center gap-4 p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all duration-200 group"
+                    >
+                        <div
+                            class="flex items-center justify-center w-11 h-11 rounded-lg bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex-shrink-0"
+                        >
+                            <svg
+                                class="w-5 h-5"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <p
+                                class="text-xs text-gray-400 dark:text-gray-500 font-medium mb-0.5"
+                            >
+                                WhatsApp
+                            </p>
+                            <p
+                                class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors"
+                            >
+                                +62 821-3197-8772
+                            </p>
+                        </div>
+                        <svg
+                            class="w-4 h-4 text-gray-400 ml-auto group-hover:text-green-500 transition-colors"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <script>
             const html = document.documentElement;
             const iconMoon = document.getElementById("icon-moon");
@@ -1159,6 +1378,178 @@
             window.addEventListener("resize", () => {
                 if (window.innerWidth >= 768) setMenu(false);
             });
+        </script>
+
+        <script>
+            const translations = {
+                id: {
+                    // Navbar
+                    "nav-home": "Home",
+                    "nav-about": "About",
+                    "nav-skills": "Skills",
+                    "nav-projects": "Projects",
+                    "nav-contact": "Contact",
+                    "nav-hireme": "Hire Me",
+                    // Hero
+                    "hero-title": "Syaiful Estrada",
+                    "hero-subtitle": "Software Engineer",
+                    "hero-cv": "Download CV",
+                    "hero-linkedin": "LinkedIn →",
+                    // About
+                    "about-heading": "Tentang Saya",
+                    "about-sub": "Sedikit tentang saya",
+                    "about-hello": "Halo, saya Syaiful 👋",
+                    "about-p1":
+                        "Saya seorang Backend Developer dengan pengalaman 1 tahun di LPSE (Lembaga Pengadaan Secara Elektronik). Saya berfokus pada pembangunan aplikasi web yang bersih, skalabel, dan andal menggunakan PHP, Laravel, dan ekosistem JavaScript modern.",
+                    "about-p2":
+                        "Saat ini sedang menempuh kuliah Sistem Informasi di Universitas Terbuka (sedang jeda). Terbuka untuk peluang kerja baru.",
+                    "about-location": "Sidoarjo, Indonesia",
+                    "about-status": "Terbuka untuk pekerjaan baru",
+                    "about-exp-title": "Pengalaman Kerja",
+                    "lpse-duration": "1 Tahun",
+                    "markaz-duration": "3 Bulan",
+                    "markaz-title": "Desainer Grafis – Magang",
+                    "lpse-li1":
+                        "Membangun dan memelihara aplikasi backend menggunakan PHP (Laravel) dan MySQL",
+                    "lpse-li2":
+                        "Membangun Sicerdas, sistem manajemen sekolah mencakup data siswa, proses akademik, dan operasional menggunakan FilamentPHP",
+                    "lpse-li3":
+                        "Merancang dan mengembangkan RESTful API Sicerdas untuk integrasi dengan aplikasi Android dan iOS",
+                    "lpse-li4":
+                        "Berkontribusi pada pengembangan sistem CariKatalog untuk manajemen data pengadaan",
+                    "lpse-li5":
+                        "Membuat REST API untuk pengunduhan data produk dari e-Katalog versi 5 dan 6 pada sistem CekLPSE",
+                    "lpse-li6":
+                        "Mengoptimalkan performa aplikasi dan query database untuk meningkatkan efisiensi sistem",
+                    "markaz-li1":
+                        "Membuat desain feed Instagram untuk brand Monster Keripik Usus",
+                    "markaz-li2":
+                        "Mendesain konten visual untuk CNC Cleaning Service Tandon",
+                    "markaz-li3":
+                        "Membuat desain produk untuk Cossydeo (deodoran)",
+                    "about-edu-title": "Pendidikan",
+                    "about-smk-desc":
+                        "Ekstrakulikuler: Robotika, Forum Rekayasa Perangkat Lunak. Fokus pada pengembangan web, desain database, dan pemrograman dasar menggunakan PHP dan MySQL.",
+                    "about-ut-status": "Sedang jeda",
+                    // Skills
+                    "skills-heading": "Tech Stack",
+                    "skills-sub":
+                        "Teknologi dan tools yang saya gunakan sehari-hari",
+                    // Projects
+                    "projects-heading": "Project Experience",
+                    "projects-sub":
+                        "Beberapa project dan sistem yang pernah saya kerjakan",
+                    "projects-visit": "Kunjungi Website →",
+                    "projects-repo": "Lihat Repository →",
+                    "sicerdas-desc":
+                        "Sistem manajemen sekolah berbasis web yang mencakup pengelolaan data siswa, proses akademik, dan operasional sekolah menggunakan Laravel dan FilamentPHP.",
+                    "ceklpse-desc":
+                        "Sistem monitoring dan pengolahan data pengadaan yang terintegrasi dengan e-Katalog versi 5 dan 6 melalui REST API untuk proses pengunduhan dan sinkronisasi data produk.",
+                    "carikatalog-desc":
+                        "Platform pencarian dan pengolahan data pengadaan yang membantu pengguna dalam mengakses dan menelusuri informasi produk dari sistem e-Katalog secara lebih efisien.",
+                    "galaxify-desc":
+                        "Website company profile berbasis Laravel dengan sistem CMS dinamis menggunakan FilamentPHP. Memiliki fitur pengelolaan About Us, Services, Projects, Members, Blog, dan Contact melalui admin panel, lengkap dengan realtime search blog, filter kategori, dan dark mode.",
+                    // Contact
+                    "contact-heading": "Hubungi Saya",
+                    "contact-sub":
+                        "Tertarik bekerja sama? Jangan ragu untuk menghubungi saya.",
+                },
+                en: {
+                    // Navbar
+                    "nav-home": "Home",
+                    "nav-about": "About",
+                    "nav-skills": "Skills",
+                    "nav-projects": "Projects",
+                    "nav-contact": "Contact",
+                    "nav-hireme": "Hire Me",
+                    // Hero
+                    "hero-title": "Syaiful Estrada",
+                    "hero-subtitle": "Software Engineer",
+                    "hero-cv": "Download CV",
+                    "hero-linkedin": "LinkedIn →",
+                    // About
+                    "about-heading": "About Me",
+                    "about-sub": "A little about me",
+                    "about-hello": "Hi, I'm Syaiful 👋",
+                    "about-p1":
+                        "I'm a Backend Developer with 1 year of experience at LPSE (Government Electronic Procurement Agency). I focus on building clean, scalable, and reliable web applications using PHP, Laravel, and modern JavaScript ecosystem.",
+                    "about-p2":
+                        "Currently pursuing a degree in Information Systems at Universitas Terbuka (on hold). Open to new job opportunities.",
+                    "about-location": "Sidoarjo, Indonesia",
+                    "about-status": "Open to new opportunities",
+                    "about-exp-title": "Work Experience",
+                    "lpse-duration": "1 Year",
+                    "markaz-duration": "3 Months",
+                    "markaz-title": "Graphic Designer – Internship",
+                    "lpse-li1":
+                        "Built and maintained backend applications using PHP (Laravel) and MySQL",
+                    "lpse-li2":
+                        "Built Sicerdas, a school management system covering student data, academic processes, and operations using FilamentPHP",
+                    "lpse-li3":
+                        "Designed and developed RESTful APIs for Sicerdas to support integration with Android and iOS applications",
+                    "lpse-li4":
+                        "Contributed to the development of the CariKatalog system for procurement data management",
+                    "lpse-li5":
+                        "Developed REST APIs for downloading product data from e-Katalog version 5 and 6, used in the CekLPSE system",
+                    "lpse-li6":
+                        "Optimized application performance and database queries to improve system efficiency",
+                    "markaz-li1":
+                        "Created Instagram feed designs for the Monster Keripik Usus brand",
+                    "markaz-li2":
+                        "Designed visual content for CNC Cleaning Service Tandon",
+                    "markaz-li3":
+                        "Created product designs for Cossydeo (deodorant brand)",
+                    "about-edu-title": "Education",
+                    "about-smk-desc":
+                        "Extracurriculars: Robotics, Software Engineering Forum. Focused on web development fundamentals, database design, and programming using PHP and MySQL.",
+                    "about-ut-status": "On hold",
+                    // Skills
+                    "skills-heading": "Tech Stack",
+                    "skills-sub":
+                        "Technologies and tools I use on a daily basis",
+                    // Projects
+                    "projects-heading": "Project Experience",
+                    "projects-sub":
+                        "Some projects and systems I have worked on",
+                    "projects-visit": "Visit Website →",
+                    "projects-repo": "View Repository →",
+                    "sicerdas-desc":
+                        "A web-based school management system covering student data management, academic processes, and school operations using Laravel and FilamentPHP.",
+                    "ceklpse-desc":
+                        "A procurement data monitoring and processing system integrated with e-Katalog version 5 and 6 via REST API for downloading and synchronizing product data.",
+                    "carikatalog-desc":
+                        "A procurement data search and processing platform that helps users access and browse product information from the e-Katalog system more efficiently.",
+                    "galaxify-desc":
+                        "A company profile website built with Laravel featuring a dynamic CMS using FilamentPHP. Includes management of About Us, Services, Projects, Members, Blog, and Contact via admin panel, with realtime blog search, category filter, and dark mode.",
+                    // Contact
+                    "contact-heading": "Contact Me",
+                    "contact-sub":
+                        "Interested in working together? Feel free to reach out.",
+                },
+            };
+
+            let currentLang = localStorage.getItem("lang") || "id";
+
+            function applyLang(lang) {
+                const t = translations[lang];
+                document.querySelectorAll("[data-i18n]").forEach((el) => {
+                    const key = el.getAttribute("data-i18n");
+                    if (t[key] !== undefined) el.textContent = t[key];
+                });
+                document.getElementById("lang-label").textContent =
+                    lang === "id" ? "EN" : "ID";
+                document.documentElement.lang = lang === "id" ? "id" : "en";
+                localStorage.setItem("lang", lang);
+                currentLang = lang;
+            }
+
+            document
+                .getElementById("lang-toggle")
+                .addEventListener("click", () => {
+                    applyLang(currentLang === "id" ? "en" : "id");
+                });
+
+            applyLang(currentLang);
         </script>
     </body>
 </html>
