@@ -280,9 +280,10 @@
 
                 <div class="flex flex-wrap gap-3 justify-center mt-2">
                     <a
-                        href="asset/cv-muhammad-syaifulloh.pdf"
+                        id=""
+                        href=""
                         download
-                        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors download-cv"
                     >
                         Download CV
                     </a>
@@ -609,6 +610,7 @@
                             >
                                 <h4
                                     class="font-semibold text-gray-900 dark:text-white"
+                                    data-i18n="univ-name"
                                 >
                                     Universitas Terbuka
                                 </h4>
@@ -620,6 +622,7 @@
                             </div>
                             <p
                                 class="text-sm text-blue-600 dark:text-blue-400 font-medium"
+                                data-i18n="univ-major-name"
                             >
                                 S1 Sistem Informasi
                             </p>
@@ -637,6 +640,7 @@
                             >
                                 <h4
                                     class="font-semibold text-gray-900 dark:text-white"
+                                    data-i18n="about-smk"
                                 >
                                     SMK Senopati
                                 </h4>
@@ -647,6 +651,7 @@
                             </div>
                             <p
                                 class="text-sm text-blue-600 dark:text-blue-400 font-medium"
+                                data-i18n="about-smk-major"
                             >
                                 Rekayasa Perangkat Lunak
                             </p>
@@ -1428,6 +1433,10 @@
                     "markaz-li3":
                         "Membuat desain produk untuk Cossydeo (deodoran)",
                     "about-edu-title": "Pendidikan",
+                    "univ-name": "Universitas Terbuka",
+                    "univ-major-name": "Sistem Informasi",
+                    "about-smk": "SMK Senopati",
+                    "about-smk-major": "Rekayasa Perangkat Lunak",
                     "about-smk-desc":
                         "Ekstrakulikuler: Robotika, Forum Rekayasa Perangkat Lunak. Fokus pada pengembangan web, desain database, dan pemrograman dasar menggunakan PHP dan MySQL.",
                     "about-ut-status": "Sedang jeda",
@@ -1500,6 +1509,10 @@
                     "markaz-li3":
                         "Created product designs for Cossydeo (deodorant brand)",
                     "about-edu-title": "Education",
+                    "univ-name": "The Open University",
+                    "univ-major-name": "Information Systems",
+                    "about-smk": "Vocational HighSchool Senopati",
+                    "about-smk-major": "Software Engineer",
                     "about-smk-desc":
                         "Extracurriculars: Robotics, Software Engineering Forum. Focused on web development fundamentals, database design, and programming using PHP and MySQL.",
                     "about-ut-status": "On hold",
@@ -1541,6 +1554,14 @@
                 document.documentElement.lang = lang === "id" ? "id" : "en";
                 localStorage.setItem("lang", lang);
                 currentLang = lang;
+
+                downloadCv = document.querySelector(".download-cv");
+                downloadCv.setAttribute(
+                    "href",
+                    lang === "id"
+                        ? "asset/cv-id-muhammad-syaifulloh.pdf"
+                        : "asset/cv-en-muhammad-syaifulloh.pdf",
+                );
             }
 
             document
